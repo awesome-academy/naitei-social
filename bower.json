@@ -1,0 +1,23 @@
+{
+  "name": "naitei-social",
+  "description": "",
+  "main": "",
+  "authors": [
+    "chung-lt <chungletrong17@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/chung-lt/naitei-social",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "library-css": "https://github.com/chung-lt/library.git",
+    "js-code": "https://github.com/chung-lt/naitei-social-js-code.git",
+    "images": "https://github.com/chung-lt/images.git"
+  }
+}
