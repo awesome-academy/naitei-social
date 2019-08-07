@@ -1,99 +1,26 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+@extends('layouts.app')
+@section('content')
+<section id="slider" class="slider-element force-full-screen full-screen">
+    <div class="force-full-screen full-screen dark section nopadding nomargin noborder ohidden">
+        <div class="container clearfix">
+            <div class="slider-caption slider-caption-center">
+                <h2 data-animate="fadeInUp">@lang('welcome.hello')</h2>
+                <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">@lang('welcome.title')</p>
+                <a data-animate="fadeInUp" data-delay="400" href="{{ route('login') }}"
+                    class="button button-border button-light button-rounded button-large noleftmargin nobottommargin d-none d-md-inline-block"
+                    style="margin-top: 30px;">Start Now</a>
+                <a data-animate="fadeInUp" data-delay="600" href="{{ route('register') }}"
+                    class="button button-3d button-teal button-large nobottommargin d-none d-md-inline-block"
+                    style="margin: 30px 0 0 10px;">Register</a>
             </div>
         </div>
-    </body>
-</html>
+        <div class="video-wrap">
+            <video poster="bower_components/library-for-naitei-social/images/videos/deskwork.jpg" preload="auto" loop autoplay muted>
+                <source src='bower_components/library-for-naitei-social/images/videos/deskwork.mp4' type='video/mp4' />
+                <source src='bower_components/library-for-naitei-social/images/videos/deskwork.webm' type='video/webm' />
+            </video>
+            <div class="video-overlay" style="background-color: rgba(0,0,0,0.45);"></div>
+        </div>
+    </div>
+</section>
+@endsection

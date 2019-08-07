@@ -16,8 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "library-css": "https://github.com/chung-lt/library.git",
-    "js-code": "https://github.com/chung-lt/naitei-social-js-code.git",
-    "images": "https://github.com/chung-lt/images.git"
+    "Font-Awesome": "git@github.com:FortAwesome/Font-Awesome.git#^5.10.1",
+    "bootstrap": "git@github.com:twbs/bootstrap.git#^4.3.1",
+    "jquery": "git@github.com:jquery/jquery.git#^3.4.1",
+    "library-for-naitei-social": "git@github.com:lambv-0034/library-for-naitei-social.git",
+    "bootstrap-datepicker": "git@github.com:uxsolutions/bootstrap-datepicker.git#^1.9.0"
   }
 }
