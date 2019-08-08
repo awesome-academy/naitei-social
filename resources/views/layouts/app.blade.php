@@ -2,83 +2,71 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="SemiColonWeb" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="author" content="SemiColonWeb" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@lang('app.social')</title>
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
-    <link
-        href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
-        rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/bootstrap.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/style.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/custom.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/dark.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/font-icons.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/animate.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/magnific-popup.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('bower_components/library-css/responsive.css') }}" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@lang('app.social')</title>
+  <!-- Styles -->
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/Font-Awesome/css/all.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/swiper.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/dark.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/font-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/animate.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/magnific-popup.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/library-for-naitei-social/css/responsive.css') }}" rel="stylesheet">
+  <link href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css') }}" rel="stylesheet"> 
+  @yield('styles')
 </head>
-
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
+<body class="stretched">
+  <div id="wrapper" class="clearfix">
+    <header id="header" class="transparent-header dark full-header no-sticky">
+      <div id="header-wrap">
+        <div class="container clearfix">
+          <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+          <nav id="primary-menu">
+            <ul>
+              @guest
+              <li class="current"><a href="{{ route('welcome') }}"><div style="color: cornflowerblue">Home</div></a></li>
+              <li><a href="{{ route('login') }}"><div style="color: cornflowerblue">Login</div></a></li>
+              <li><a href="{{ route('register') }}"><div style="color: cornflowerblue">Register</div></a></li>
+              @endguest
+              @auth
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();"><div style="color: crimson">Logout</div>
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                  </form>
                 </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+              </li>
+              @endauth
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+    @yield('content')
+    @include('shared.footer')
+    <div id="gotoTop" class="icon-angle-up"></div>
+  </div>
+  <script src="{{ asset('bower_components/library-for-naitei-social/js/app.js') }}"></script>
+  <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ asset('bower_components/library-for-naitei-social/js/plugins.js') }}"></script>
+  <script src="{{ asset('bower_components/library-for-naitei-social/js/functions.js') }}"></script>
+  <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js') }}"></script>
+  @yield('scripts')
 </body>
-
 </html>
